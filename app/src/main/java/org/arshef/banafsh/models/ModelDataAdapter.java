@@ -4,8 +4,6 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.widget.ArrayAdapter;
 
-import org.arshef.banafsh.models.DataModel;
-
 import java.util.List;
 
 public class ModelDataAdapter extends ArrayAdapter<DataModel> {
