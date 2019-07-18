@@ -12,6 +12,10 @@ public class ChooseActivity extends AppCompatActivity {
     public static int choice = -1;
 
     @Override
+    public void onBackPressed() {
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose);

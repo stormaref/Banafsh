@@ -3,10 +3,13 @@ package org.arshef.banafsh.views;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import org.arshef.banafsh.R;
 import org.arshef.banafsh.models.DataModel;
+import org.arshef.banafsh.models.ModelDataAdapter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -16,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ListView listView = findViewById(R.id.main_listview);
-        List<DataModel> list;
+        List<DataModel> list = new ArrayList<>();
         switch (ChooseActivity.choice) {
             case 0: {
                 list = getRList();
@@ -28,8 +31,8 @@ public class MainActivity extends AppCompatActivity {
                 list = getEList();
             }
         }
-//        ModelDataAdapter adapter = new ModelDataAdapter();
-//        listView.setAdapter(adapter);
+        ModelDataAdapter adapter = new ModelDataAdapter(this, list);
+        listView.setAdapter(adapter);
     }
 
     private List<DataModel> gerTList() {
