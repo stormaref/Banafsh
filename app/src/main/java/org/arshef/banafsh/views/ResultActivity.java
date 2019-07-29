@@ -1,6 +1,7 @@
 package org.arshef.banafsh.views;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
@@ -22,6 +23,7 @@ import org.arshef.banafsh.services.RecyclerViewAdapter;
 import java.util.List;
 
 public class ResultActivity extends AppCompatActivity {
+    public static String name;
 
     @Override
     public void onBackPressed() {
@@ -37,7 +39,7 @@ public class ResultActivity extends AppCompatActivity {
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(ResultActivity.this);
                 LayoutInflater inflater = getLayoutInflater();
-                View dialogView = inflater.inflate(R.layout.dialog,null);
+                View dialogView = inflater.inflate(R.layout.dialog, null);
                 builder.setCancelable(false);
                 builder.setView(dialogView);
                 Button btn_positive = dialogView.findViewById(R.id.okBtn);
@@ -47,7 +49,8 @@ public class ResultActivity extends AppCompatActivity {
                 btn_positive.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        String str = nameTxt.getText().toString();
+                        name = nameTxt.getText().toString();
+                        startActivity(new Intent(ResultActivity.this, FinalActivity.class));
                     }
                 });
                 btn_negative.setOnClickListener(new View.OnClickListener() {

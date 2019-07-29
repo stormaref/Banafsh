@@ -8,13 +8,38 @@
 
     <ListView
         android:id="@+id/main_listview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="420dp"
+        android:layout_height="667dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <include
+        android:id="@+id/include"
         layout="@layout/check_extra_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="جای خالی"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/addSpace"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/shape_drawable"
+        android:src="@drawable/plus"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/include" />
 </android.support.constraint.ConstraintLayout>

@@ -6,6 +6,8 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 import org.arshef.banafsh.R;
@@ -26,6 +28,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ImageButton addSpace = findViewById(R.id.addSpace);
+        addSpace.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ModelDataAdapter.Models.add(new DataModel(0, ModelDataAdapter.Models.size() + 1, "", "", 0));
+            }
+        });
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
