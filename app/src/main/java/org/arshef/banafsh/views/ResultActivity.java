@@ -102,7 +102,7 @@ public class ResultActivity extends AppCompatActivity {
 
     public static void SavePdf() throws FileNotFoundException, DocumentException {
         Document document = new Document();
-        PdfPTable table = new PdfPTable(new float[]{2, 1, 2});
+        PdfPTable table = new PdfPTable(new float[]{1, 1, 2});
         table.getDefaultCell().setHorizontalAlignment(Element.ALIGN_CENTER);
         table.addCell("Name");
         table.addCell("Age");
