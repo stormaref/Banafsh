@@ -2,7 +2,6 @@ package org.arshef.banafsh.views;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -11,8 +10,7 @@ import android.widget.ListView;
 
 import org.arshef.banafsh.R;
 import org.arshef.banafsh.models.DataModel;
-import org.arshef.banafsh.models.ModelDataAdapter;
-import org.arshef.banafsh.models.ResultDataAdapter;
+import org.arshef.banafsh.services.ModelDataAdapter;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -21,10 +19,8 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.xml.transform.Result;
-
 public class MainActivity extends AppCompatActivity {
-    List<DataModel> list;
+    public static List<DataModel> list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

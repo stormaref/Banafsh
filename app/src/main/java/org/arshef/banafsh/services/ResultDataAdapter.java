@@ -1,4 +1,4 @@
-package org.arshef.banafsh.models;
+package org.arshef.banafsh.services;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import org.arshef.banafsh.R;
+import org.arshef.banafsh.models.DataModel;
 
 import java.util.List;
 

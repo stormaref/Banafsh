@@ -1,16 +1,17 @@
 package org.arshef.banafsh.views;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.View;
-import android.widget.ListView;
 
 import org.arshef.banafsh.R;
 import org.arshef.banafsh.models.DataModel;
-import org.arshef.banafsh.models.ModelDataAdapter;
-import org.arshef.banafsh.models.ResultDataAdapter;
+import org.arshef.banafsh.services.ItemMoveCallback;
+import org.arshef.banafsh.services.ModelDataAdapter;
+import org.arshef.banafsh.services.RecyclerViewAdapter;
 
 import java.util.List;
 
@@ -31,9 +32,13 @@ public class ResultActivity extends AppCompatActivity {
                 ResultActivity.super.onBackPressed();
             }
         });
+        RecyclerView recyclerView = findViewById(R.id.recyclerView);
         List<DataModel> list = ModelDataAdapter.Models;
-        ResultDataAdapter adapter = new ResultDataAdapter(this, list);
-        ListView listView = findViewById(R.id.resultListView);
-        listView.setAdapter(adapter);
+        RecyclerViewAdapter mAdapter = new RecyclerViewAdapter(list);
+        ItemTouchHelper.Callback callback =
+                new ItemMoveCallback(mAdapter);
+        ItemTouchHelper touchHelper = new ItemTouchHelper(callback);
+        touchHelper.attachToRecyclerView(recyclerView);
+        recyclerView.setAdapter(mAdapter);
     }
 }
