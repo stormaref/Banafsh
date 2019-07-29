@@ -58,14 +58,14 @@ public class MainActivity extends AppCompatActivity {
         try {
             String s = loadJSONFromAsset(choose);
             JSONArray array = new JSONArray(s);
-            for (int i = 1; i < array.length(); i++) {
+            for (int i = 0; i < array.length(); i++) {
                 JSONObject object = array.getJSONObject(i);
                 String a = object.getString("a");
                 String b = object.getString("b");
                 String c = object.getString("c");
                 String tmp = object.getString("d");
                 String d = (!tmp.equals("")) ? tmp : "0";
-                DataModel model = new DataModel(Integer.parseInt(a), b, c, Integer.parseInt(d));
+                DataModel model = new DataModel(i + 1, Integer.parseInt(a) + 1, b, c, Integer.parseInt(d));
                 list.add(model);
             }
         } catch (Exception e) {

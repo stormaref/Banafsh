@@ -59,7 +59,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.mBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ModelDataAdapter.checkedState.set(data.get(position).Position - 1, false);
+                ModelDataAdapter.checkedState.set(data.get(position).Id - 1, false);
                 ModelDataAdapter.Models.remove(position);
                 ModelDataAdapter.getInstance().refresh();
                 data.remove(position);
