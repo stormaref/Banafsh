@@ -22,7 +22,7 @@ public class ResultDataAdapter extends ArrayAdapter<DataModel> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         if (convertView == null)
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_item_layout, parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.result_item_layout, parent, false);
         final DataModel item = getItem(position);
         TextView posTxt = convertView.findViewById(R.id.posLabel);
         posTxt.setText(String.format(".%s", String.valueOf(item.Position)));
