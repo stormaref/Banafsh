@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.TextView;
 
 import org.arshef.banafsh.R;
 
@@ -23,6 +24,12 @@ public class ResultDataAdapter extends ArrayAdapter<DataModel> {
         if (convertView == null)
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_item_layout, parent, false);
         final DataModel item = getItem(position);
+        TextView posTxt = convertView.findViewById(R.id.posLabel);
+        posTxt.setText(String.format(".%s", String.valueOf(item.Position)));
+        TextView titleTxt = convertView.findViewById(R.id.titleLabel);
+        titleTxt.setText(item.Title);
+        TextView uniTxt = convertView.findViewById(R.id.uniLabel);
+        uniTxt.setText(item.University);
         return convertView;
     }
 }

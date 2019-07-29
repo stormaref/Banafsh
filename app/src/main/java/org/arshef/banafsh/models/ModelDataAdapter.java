@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -31,14 +32,18 @@ public class ModelDataAdapter extends ArrayAdapter<DataModel> {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_item_layout, parent, false);
         final DataModel item = getItem(position);
         TextView posTxt = convertView.findViewById(R.id.posTxt);
-        posTxt.setText(String.valueOf(item.Position));
+        posTxt.setText(String.format(".%s", String.valueOf(item.Position)));
         TextView titleTxt = convertView.findViewById(R.id.titleTxt);
-        titleTxt.setText(String.format("%s %s", item.University, item.Title));
-        ImageButton addBtn = convertView.findViewById(R.id.addBtn);
-        addBtn.setOnClickListener(new View.OnClickListener() {
+        titleTxt.setText(item.Title);
+        TextView uniTxt = convertView.findViewById(R.id.uniTxt);
+        uniTxt.setText(item.University);
+        CheckBox checkbox = convertView.findViewById(R.id.checkbox);
+        checkbox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addItem(item);
+                if (!((CheckBox) v).isChecked())
+                    Models.remove(item);
+                else Models.add(item);
             }
         });
         return convertView;

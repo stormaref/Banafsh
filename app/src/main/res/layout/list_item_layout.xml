@@ -2,36 +2,48 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="100dp">
+    android:layout_height="60dp">
 
     <TextView
         android:id="@+id/posTxt"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
+        android:visibility="invisible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="17dp" />
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="9dp"
+        android:gravity="center"
+        android:text="1" />
 
-    <ImageButton
-        android:id="@+id/addBtn"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+    <CheckBox
+        android:id="@+id/checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="14dp"
-        android:layout_marginTop="17dp"
-        android:clickable="true"
-        android:background="@drawable/shape_drawable"
-        app:srcCompat="@drawable/plus" />
+        android:layout_marginTop="8dp"
+        android:buttonTint="@color/mainColor" />
 
     <TextView
         android:id="@+id/titleTxt"
-        android:layout_width="230dp"
-        android:layout_height="45dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="18dp"
-        android:layout_toStartOf="@+id/posTxt" />
+        android:layout_toStartOf="@+id/posTxt"
+        android:gravity="center" />
+
+    <TextView
+        android:id="@+id/uniTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_toEndOf="@+id/checkbox"
+        android:gravity="center" />
 
 </RelativeLayout>
