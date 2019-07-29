@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import org.arshef.banafsh.R;
@@ -33,7 +34,7 @@ public class ModelDataAdapter extends ArrayAdapter<DataModel> {
         posTxt.setText(String.valueOf(item.Position));
         TextView titleTxt = convertView.findViewById(R.id.titleTxt);
         titleTxt.setText(String.format("%s %s", item.University, item.Title));
-        Button addBtn = convertView.findViewById(R.id.addBtn);
+        ImageButton addBtn = convertView.findViewById(R.id.addBtn);
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
