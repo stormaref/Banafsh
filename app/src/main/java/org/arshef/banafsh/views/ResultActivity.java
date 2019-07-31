@@ -28,6 +28,7 @@ import org.arshef.banafsh.R;
 import org.arshef.banafsh.models.DataModel;
 import org.arshef.banafsh.services.ItemMoveCallback;
 import org.arshef.banafsh.services.ModelDataAdapter;
+import org.arshef.banafsh.services.PDFHandler;
 import org.arshef.banafsh.services.RecyclerViewAdapter;
 
 import java.io.File;
@@ -65,11 +66,11 @@ public class ResultActivity extends AppCompatActivity {
                         name = nameTxt.getText().toString();
                         if (!name.equals("")) {
                             try {
-                                SavePdf();
-                                Toast.makeText(ResultActivity.this,"Saved Succeed!",Toast.LENGTH_LONG).show();
+                                PDFHandler.createTable(name, ModelDataAdapter.Models);
+                                Toast.makeText(ResultActivity.this, "Saved Succeed!", Toast.LENGTH_LONG).show();
                             } catch (Exception e) {
                                 Log.wtf("**", e.getMessage());
-                                Toast.makeText(ResultActivity.this,"Error!",Toast.LENGTH_LONG).show();
+                                Toast.makeText(ResultActivity.this, "Error!", Toast.LENGTH_LONG).show();
                             }
                         }
                     }

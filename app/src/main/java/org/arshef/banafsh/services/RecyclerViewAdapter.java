@@ -20,7 +20,7 @@ import java.util.List;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> implements ItemMoveCallback.ItemTouchHelperContract {
 
-    private List<DataModel> data;
+    public List<DataModel> data;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 

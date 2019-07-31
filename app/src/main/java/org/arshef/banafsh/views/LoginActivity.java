@@ -24,11 +24,6 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         permission();
-        try {
-            PDFHandler.createTable();
-        } catch (Exception e) {
-            Log.wtf("***********",e.getMessage());
-        }
         setContentView(R.layout.activity_login);
         Button loginBtn = findViewById(R.id.loginBtn);
         loginBtn.setOnClickListener(new View.OnClickListener() {
