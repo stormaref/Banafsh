@@ -7,14 +7,12 @@ import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import org.arshef.banafsh.R;
-import org.arshef.banafsh.services.PDFHandler;
 
 public class LoginActivity extends AppCompatActivity {
     final String Username = "a";
@@ -39,18 +37,18 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    private void permission() {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(LoginActivity.this,
-                    new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
-                    1);
-        }
-    }
-
     private void Login() {
         Toast.makeText(LoginActivity.this, "خوش آمدید", Toast.LENGTH_SHORT).show();
         startActivity(new Intent(LoginActivity.this, ChooseActivity.class));
+    }
+
+    private void permission() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                    1);
+        }
     }
 
     @Override

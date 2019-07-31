@@ -1,6 +1,11 @@
 package org.arshef.banafsh.services;
 
+import android.Manifest;
+import android.app.Activity;
+import android.content.pm.PackageManager;
 import android.os.Environment;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
@@ -21,36 +26,48 @@ import java.util.List;
 public class PDFHandler {
     static Font font;
 
-    public static void createTable(String name, List<DataModel> list) throws Exception {
+    public static void createTable(Activity context, String name, List<DataModel> list) throws Exception {
         Document document = new Document();
         PdfPTable table = new PdfPTable(new float[]{2, 1, 2, 1});
         table.setRunDirection(PdfWriter.RUN_DIRECTION_RTL);
         table.getDefaultCell().setHorizontalAlignment(Element.ALIGN_CENTER);
         BaseFont bf = BaseFont.createFont("assets/font/zar.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
         font = new Font(bf, 12);
-        table.addCell(getPhrase("اولویت",16));
-        table.addCell(getPhrase("رشته",16));
-        table.addCell(getPhrase("دانشگاه",16));
-        table.addCell(getPhrase("کد رشته",16));
+        table.addCell(getPhrase("اولویت", 16));
+        table.addCell(getPhrase("رشته", 16));
+        table.addCell(getPhrase("دانشگاه", 16));
+        table.addCell(getPhrase("کد رشته", 16));
         table.setHeaderRows(1);
         PdfPCell[] cells = table.getRow(0).getCells();
         for (PdfPCell cell : cells) {
             cell.setBackgroundColor(BaseColor.LIGHT_GRAY);
         }
         for (DataModel model : list) {
-            table.addCell(getPhrase(String.valueOf(model.Position),12));
-            table.addCell(getPhrase(model.Title,12));
-            table.addCell(getPhrase(model.University,12));
-            table.addCell(getPhrase(String.valueOf(model.Code),12));
+            table.addCell(getPhrase(String.valueOf(model.Position), 12));
+            table.addCell(getPhrase(model.Title, 12));
+            table.addCell(getPhrase(model.University, 12));
+            table.addCell(getPhrase(String.valueOf(model.Code), 12));
         }
         String path = String.format("%s/pdfs/", Environment.getExternalStorageDirectory().getAbsolutePath());
-        final File directory = new File((path));
-        if (!directory.exists())
+        final File directory = new File(path);
+        boolean b = false;
+        while (!directory.exists()) {
+            permission(context);
             directory.mkdir();
+        }
         PdfWriter.getInstance(document, new FileOutputStream(String.format("%s%s.pdf", path, name)));
         document.open();
         document.add(table);
         document.close();
+    }
+
+    private static void permission(Activity context) {
+        if (ContextCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(context,
+                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                    1);
+        }
     }
 
     private static Phrase getPhrase(String text, int size) {
