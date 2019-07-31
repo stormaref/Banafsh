@@ -28,20 +28,20 @@ public class PDFHandler {
         table.getDefaultCell().setHorizontalAlignment(Element.ALIGN_CENTER);
         BaseFont bf = BaseFont.createFont("assets/font/zar.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
         font = new Font(bf, 12);
-        table.addCell(getPhrase("اولویت"));
-        table.addCell(getPhrase("رشته"));
-        table.addCell(getPhrase("دانشگاه"));
-        table.addCell(getPhrase("کد رشته"));
+        table.addCell(getPhrase("اولویت",16));
+        table.addCell(getPhrase("رشته",16));
+        table.addCell(getPhrase("دانشگاه",16));
+        table.addCell(getPhrase("کد رشته",16));
         table.setHeaderRows(1);
         PdfPCell[] cells = table.getRow(0).getCells();
         for (PdfPCell cell : cells) {
             cell.setBackgroundColor(BaseColor.LIGHT_GRAY);
         }
         for (DataModel model : list) {
-            table.addCell(getPhrase(String.valueOf(model.Position)));
-            table.addCell(getPhrase(model.Title));
-            table.addCell(getPhrase(model.University));
-            table.addCell(getPhrase(String.valueOf(model.Code)));
+            table.addCell(getPhrase(String.valueOf(model.Position),12));
+            table.addCell(getPhrase(model.Title,12));
+            table.addCell(getPhrase(model.University,12));
+            table.addCell(getPhrase(String.valueOf(model.Code),12));
         }
         String path = String.format("%s/pdfs/", Environment.getExternalStorageDirectory().getAbsolutePath());
         final File directory = new File((path));
@@ -53,7 +53,7 @@ public class PDFHandler {
         document.close();
     }
 
-    private static Phrase getPhrase(String text) {
-        return new Phrase(16, text, font);
+    private static Phrase getPhrase(String text, int size) {
+        return new Phrase(size, text, font);
     }
 }

@@ -53,8 +53,8 @@ public class ResultActivity extends AppCompatActivity {
                         name = nameTxt.getText().toString();
                         if (!name.equals("")) {
                             try {
-                                PDFHandler.createTable(name, ModelDataAdapter.Models);
-                                Toast.makeText(ResultActivity.this, String.format("%s %s/pdfs/", "Saved in ", Environment.getExternalStorageDirectory().getAbsolutePath()), Toast.LENGTH_LONG).show();
+                                PDFHandler.createTable(name, RecyclerViewAdapter.data);
+                                Toast.makeText(ResultActivity.this, String.format("%s %s/pdfs/", "Saved in", Environment.getExternalStorageDirectory().getAbsolutePath()), Toast.LENGTH_LONG).show();
                                 dialog.dismiss();
                             } catch (Exception e) {
                                 Log.wtf("**", e.getMessage());
