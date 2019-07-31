@@ -7,12 +7,14 @@ import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import org.arshef.banafsh.R;
+import org.arshef.banafsh.services.PDFHandler;
 
 public class LoginActivity extends AppCompatActivity {
     final String Username = "a";
@@ -22,6 +24,11 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         permission();
+        try {
+            PDFHandler.createTable();
+        } catch (Exception e) {
+            Log.wtf("***********",e.getMessage());
+        }
         setContentView(R.layout.activity_login);
         Button loginBtn = findViewById(R.id.loginBtn);
         loginBtn.setOnClickListener(new View.OnClickListener() {
