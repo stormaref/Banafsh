@@ -3,7 +3,6 @@ package org.arshef.banafsh.services;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,8 +18,8 @@ import java.util.List;
 
 public class ModelDataAdapter extends ArrayAdapter<DataModel> {
     public static List<DataModel> Models;
-    public static List<Boolean> checkedState;
-    static ModelDataAdapter instance;
+    static List<Boolean> checkedState;
+    private static ModelDataAdapter instance;
 
     public ModelDataAdapter(@NonNull Context context, @NonNull List<DataModel> objects) {
         super(context, R.layout.list_item_layout, objects);
@@ -63,16 +62,18 @@ public class ModelDataAdapter extends ArrayAdapter<DataModel> {
         checkbox.setOnCheckedChangeListener(null);
         return convertView;
     }
-    public static ModelDataAdapter getInstance() {
+
+    static ModelDataAdapter getInstance() {
         return instance;
     }
-    public void refresh() {
+
+    void refresh() {
         notifyDataSetChanged();
     }
 
     private void Correction() {
         for (int i = 0; i < Models.size(); i++) {
-            Models.get(i).Position = i+1;
+            Models.get(i).Position = i + 1;
         }
     }
 }

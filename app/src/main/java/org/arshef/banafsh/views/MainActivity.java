@@ -6,7 +6,6 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
@@ -84,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public String loadJSONFromAsset(String choose) {
-        String json = null;
+        String json;
         try {
             InputStream is = getAssets().open(choose);
             int size = is.available();

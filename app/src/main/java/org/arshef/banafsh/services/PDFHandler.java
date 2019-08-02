@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Paint;
 import android.os.Environment;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -17,9 +16,7 @@ import com.itextpdf.text.Document;
 import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.Image;
-import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
-import com.itextpdf.text.TabStop;
 import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
@@ -78,7 +75,7 @@ public class PDFHandler {
             table.addCell(getPhrase(String.valueOf(model.Position), 12));
             table.addCell(getPhrase(model.Title, 12));
             table.addCell(getPhrase(model.University, 12));
-            table.addCell(getPhrase(String.valueOf(model.Code), 12));
+            table.addCell(" ");
         }
         String path = String.format("%s/pdfs/", Environment.getExternalStorageDirectory().getAbsolutePath());
         final File directory = new File(path);
