@@ -46,11 +46,11 @@ public class MainActivity extends AppCompatActivity {
         list = new ArrayList<>();
         switch (ChooseActivity.choice) {
             case 0: {
-                list = getList("app.json");
+                list = getList("riazi.json");
                 break;
             }
             case 1: {
-                list = getList("app.json");
+                list = getList("tajrobi.json");
                 break;
             }
             case 2: {
