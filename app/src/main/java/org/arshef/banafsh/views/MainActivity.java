@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
             }
             case 2: {
-                list = getList("app.json");
+                list = getList("none.json");
                 break;
             }
         }
