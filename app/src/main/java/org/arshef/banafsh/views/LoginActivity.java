@@ -15,8 +15,8 @@ import android.widget.Toast;
 import org.arshef.banafsh.R;
 
 public class LoginActivity extends AppCompatActivity {
-    final String Username = "a";
-    final String Password = "a";
+    final String Username = "Foadmirbagheri";
+    final String Password = "Mirbagheri304";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

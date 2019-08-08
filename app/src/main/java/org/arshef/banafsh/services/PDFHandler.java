@@ -48,19 +48,14 @@ public class PDFHandler {
         info.getDefaultCell().setHorizontalAlignment(Element.ALIGN_CENTER);
         info.getDefaultCell().setVerticalAlignment(Element.ALIGN_CENTER);
         info.getDefaultCell().setFixedHeight(100);
-        //todo: string format bezaram \r\n ghatish konam be jaye ye cell e jadid
-        info.addCell(getCell("انتخاب رشته", PdfPCell.ALIGN_LEFT, 18));
-        info.addCell(getCell("مرکز تخصصی مشاوره و برنامه ریزی", PdfPCell.ALIGN_CENTER, 18));
+        info.addCell(getCell(String.format("%s\r\n \r\n%s", "انتخاب رشته", name), PdfPCell.ALIGN_LEFT, 18));
+        info.addCell(getCell(String.format("%s\r\n \r\n %s", "مرکز تخصصی مشاوره و برنامه ریزی", "گروه آموزشی فواد میرباقری"), PdfPCell.ALIGN_CENTER, 18));
         info.addCell(getImageCell(context, PdfPCell.ALIGN_RIGHT));
-        info.addCell(getCell(name, PdfPCell.ALIGN_LEFT, 18));
-        info.addCell(getCell("گروه آموزشی فواد میرباقری", PdfPCell.ALIGN_CENTER, 18));
-        info.addCell(getCell("    ",PdfPCell.ALIGN_CENTER,18));
+        info.addCell(getCell("    ", PdfPCell.ALIGN_CENTER, 18));
 
-        for (int i = 0; i < 3; i++) {
-            info.addCell(getCell("    ",PdfPCell.ALIGN_CENTER,18));
+        for (int i = 0; i < 6; i++) {
+            info.addCell(getCell("    ", PdfPCell.ALIGN_CENTER, 18));
         }
-//        Paragraph paragraph = new Paragraph("انتخاب رشته");
-//        paragraph.setAlignment(Element.ALIGN_RIGHT);
         Chunk linebreak = new Chunk(new DottedLineSeparator());
         table.addCell(getPhrase("اولویت", 16));
         table.addCell(getPhrase("رشته", 16));
@@ -124,7 +119,8 @@ public class PDFHandler {
             return null;
         }
     }
-    private static PdfPCell getImageCell(Context context,int alignment){
+
+    private static PdfPCell getImageCell(Context context, int alignment) {
         PdfPCell cell = new PdfPCell(getImage(context));
         cell.setPadding(0);
         cell.setHorizontalAlignment(alignment);
